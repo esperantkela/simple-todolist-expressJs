@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoList</title>
+  </head>
+  <body>
+    <h1>Todolist</h1>
+
+    <form action="/task" method="post">
+      <input
+        type="text"
+        name="title"
+        autofocus
+        placeholder="New task title"
+        required
+      />
+      <button type="submit">Add</button>
+    </form>
+    <h3>Tasks</h3>
+
+    <ul>
+      <% tasks.forEach((item, index) => {%> <% if(item.done) {%>
+      <li>
+        <s><%= item.title %> </s>:
+        <a href="/task/<%= index %>/delete">Delete</a>
+      </li>
+
+      <%} else { %>
+      <li><%= item.title %> <a href="/task/<%= index %>/done">Done</a></li>
+      <%}%> %> <%}) %>
+    </ul>
+  </body>
+</html>
